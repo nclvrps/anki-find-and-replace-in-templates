@@ -12,7 +12,7 @@
 * Select Notetype you want to find and replace the string in templates
 
 ### Screenshots
-<img src='./screenshot/screenshot.png' style='width:100px;height:100px' />
+<img src='./screenshot/screenshot.png' style='width:400px;height:400px' />
 
 To download and install the addon [visit here](https://ankiweb.net/shared/info/992153575).
 ****

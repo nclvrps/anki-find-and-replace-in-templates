@@ -10,6 +10,7 @@ from aqt.utils import showInfo, askUser
 from aqt import mw
 from anki.hooks import addHook
 from PyQt5 import QtCore, QtGui, QtWidgets
+from anki import version as anki_version
 
 
 class FindAndReplaceInTemplates_Dialog(object):
@@ -131,7 +132,10 @@ class FindAndReplaceInTemplates_Dialog(object):
                                 if answer and key == 'afmt':
                                     tmpls[key] = value.replace(
                                         findText, replaceText)
-                    ankimodels.update_dict(model)
+                    if anki_version.startswith('2.1.4'):
+                        ankimodels.save(model)
+                    else:
+                        ankimodels.update_dict(model)
                     count += 1
             else:
                 for model in mw.col.models.all():
@@ -148,7 +152,10 @@ class FindAndReplaceInTemplates_Dialog(object):
                                     if answer and key == 'afmt':
                                         tmpls[key] = value.replace(
                                             findText, replaceText)
-                        ankimodels.update_dict(model)
+                        if anki_version.startswith('2.1.4'):
+                            ankimodels.save(model)
+                        else:
+                            ankimodels.update_dict(model)
                         count += 1
             # finish progress
             mw.progress.finish()

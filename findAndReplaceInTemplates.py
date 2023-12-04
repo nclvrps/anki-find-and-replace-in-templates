@@ -9,7 +9,9 @@ from aqt.qt import *
 from aqt.utils import showInfo, askUser
 from aqt import mw
 from anki.hooks import addHook
-from PyQt5 import QtCore, QtGui, QtWidgets
+from aqt.qt import QRect, QMetaObject, QCoreApplication # QtCore
+from aqt.qt import QComboBox, QLabel, QTextEdit, QPushButton, QCheckBox # QtWidgets
+
 from anki import version as anki_version
 
 
@@ -19,43 +21,43 @@ class FindAndReplaceInTemplates_Dialog(object):
         Form.resize(480, 440)
         Form.setStyleSheet("")
         # ... (UI setup code)
-        self.comboBox = QtWidgets.QComboBox(Form)
-        self.comboBox.setGeometry(QtCore.QRect(20, 50, 441, 25))
+        self.comboBox = QComboBox(Form)
+        self.comboBox.setGeometry(QRect(20, 50, 441, 25))
         self.comboBox.setObjectName("comboBox")
         ankinotetypes = mw.col.models.all_names_and_ids()
         notetypes = ['All Notetypes']
         for notetype in ankinotetypes:
             notetypes.append(notetype.name)
         self.comboBox.addItems(notetypes)
-        self.label = QtWidgets.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(20, 140, 71, 31))
+        self.label = QLabel(Form)
+        self.label.setGeometry(QRect(20, 140, 71, 31))
         self.label.setStyleSheet("font-size:20px;\n"
                                  "font-weight:800;")
         self.label.setObjectName("label")
-        self.textEdit = QtWidgets.QTextEdit(Form)
-        self.textEdit.setGeometry(QtCore.QRect(120, 130, 341, 101))
+        self.textEdit = QTextEdit(Form)
+        self.textEdit.setGeometry(QRect(120, 130, 341, 101))
         self.textEdit.setObjectName("textEdit")
-        self.label_2 = QtWidgets.QLabel(Form)
-        self.label_2.setGeometry(QtCore.QRect(20, 260, 81, 31))
+        self.label_2 = QLabel(Form)
+        self.label_2.setGeometry(QRect(20, 260, 81, 31))
         self.label_2.setStyleSheet("font-size:20px;\n"
                                    "font-weight:800;")
         self.label_2.setObjectName("label_2")
-        self.textEdit_2 = QtWidgets.QTextEdit(Form)
-        self.textEdit_2.setGeometry(QtCore.QRect(120, 250, 341, 101))
+        self.textEdit_2 = QTextEdit(Form)
+        self.textEdit_2.setGeometry(QRect(120, 250, 341, 101))
         self.textEdit_2.setObjectName("textEdit_2")
-        self.label_3 = QtWidgets.QLabel(Form)
-        self.label_3.setGeometry(QtCore.QRect(20, 20, 211, 31))
+        self.label_3 = QLabel(Form)
+        self.label_3.setGeometry(QRect(20, 20, 211, 31))
         self.label_3.setStyleSheet("font-size:20px;")
         self.label_3.setObjectName("label_3")
-        self.pushButton = QtWidgets.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(160, 370, 191, 41))
+        self.pushButton = QPushButton(Form)
+        self.pushButton.setGeometry(QRect(160, 370, 191, 41))
         self.pushButton.setStyleSheet("font-size:16px;\n"
                                       "font-weight:800;\n"
                                       "padding:5px 10px;\n"
                                       "font: 75 oblique 14pt \"DejaVu Sans\";")
         self.pushButton.setObjectName("pushButton")
-        self.pushButton_2 = QtWidgets.QPushButton(Form)
-        self.pushButton_2.setGeometry(QtCore.QRect(360, 370, 101, 41))
+        self.pushButton_2 = QPushButton(Form)
+        self.pushButton_2.setGeometry(QRect(360, 370, 101, 41))
         self.pushButton_2.setStyleSheet("font-size:16px;\n"
                                         "font-weight:800;\n"
                                         "padding:5px 10px;\n"
@@ -65,27 +67,27 @@ class FindAndReplaceInTemplates_Dialog(object):
         self.pushButton.clicked.connect(self.findAndReplace)
         self.pushButton_2.clicked.connect(Form.reject)
 
-        self.checkBox = QtWidgets.QCheckBox(Form)
-        self.checkBox.setGeometry(QtCore.QRect(130, 90, 93, 23))
+        self.checkBox = QCheckBox(Form)
+        self.checkBox.setGeometry(QRect(130, 90, 93, 23))
         self.checkBox.setStyleSheet("font-size:16px;")
         self.checkBox.setChecked(True)
         self.checkBox.setObjectName("checkBox")
-        self.checkBox_2 = QtWidgets.QCheckBox(Form)
-        self.checkBox_2.setGeometry(QtCore.QRect(250, 90, 93, 23))
+        self.checkBox_2 = QCheckBox(Form)
+        self.checkBox_2.setGeometry(QRect(250, 90, 93, 23))
         self.checkBox_2.setStyleSheet("font-size:16px;")
         self.checkBox_2.setChecked(True)
         self.checkBox_2.setObjectName("checkBox_2")
-        self.checkBox_3 = QtWidgets.QCheckBox(Form)
-        self.checkBox_3.setGeometry(QtCore.QRect(350, 90, 93, 23))
+        self.checkBox_3 = QCheckBox(Form)
+        self.checkBox_3.setGeometry(QRect(350, 90, 93, 23))
         self.checkBox_3.setStyleSheet("font-size:16px;")
         self.checkBox_3.setChecked(False)
         self.checkBox_3.setObjectName("checkBox_3")
 
         self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
-        _translate = QtCore.QCoreApplication.translate
+        _translate = QCoreApplication.translate
         Form.setWindowTitle(_translate(
             "Form", "Find and Replace in Templates"))
         self.label.setText(_translate("Form", "Find"))
